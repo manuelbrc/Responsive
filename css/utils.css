@@ -1,0 +1,31 @@
+.u-rounded{
+	border-radius: 0.3em;
+}
+.u-brounded{
+	border-radius: 0.6em;
+}
+/*borde redondeado sugerido para elementos de formulario*/
+.u-srounded{
+	border-radius: 0.2em;
+}
+.u-shadowed{
+	box-shadow: 2px 2px 5px #333;
+}
+.u-bg-teal{
+	background-color:teal;
+}
+.u-bg-tomato{
+	background-color: tomato;
+}
+.u-bg-wheat{
+	background-color: wheat;
+}
+.u-bg-salmon{
+	background-color: salmon;
+}
+.u-bg-lgray{
+	background: #f1f1f1;
+}
+.u-bg-gray{
+	background: #919191;
+}

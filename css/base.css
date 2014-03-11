@@ -1,0 +1,98 @@
+*{
+	padding: 0.25em;
+}
+body{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 16px;
+	margin: auto;
+	max-width: 75em;	
+	padding: 0.125em;
+	width: 98.5%;
+	color:white;
+}
+header,footer{
+	min-height: 4em;
+	padding: 0.25em;
+	text-align: center;
+}
+/*Navigation*/
+nav{
+	padding: 0px;
+}
+nav ul,nav li,nav a{
+	color: white;
+	display:inline-block;
+	list-style: none;
+	margin:0;
+	padding: 0;
+	text-decoration: none;
+}
+nav a{
+	padding: 0.5em;
+	transition:all 0.35s linear;
+}
+nav a:hover{
+	background: #212121;
+	/*border-top:0.2em solid white;*/
+	/*padding-top: 0.2em;*/
+	color: tomato;
+	transform:translate(-0.225em);
+}
+footer{
+	min-height: 2em;
+	padding: 0.25em;
+}
+.container section, .container aside{
+	height: 100%;
+	overflow: auto;
+	padding: 0.24em;
+	vertical-align: top;
+	width: 75%;
+}
+.container aside{
+	width: 22%;
+}
+.container{
+	overflow:hidden;
+	padding: 0.25em;
+	width: 100%;
+}
+.phoneHidden{
+	display: inline-block;
+}
+.phoneFill{
+	display: inline-block;
+}
+.tabletHidden{
+	display: inline-block;
+}
+
+@media only screen and (max-width: 320px){
+
+}
+
+@media only screen and (max-width: 480px){
+
+}
+@media only screen and (max-width: 600px){
+	.phoneHidden{
+		display: none;
+	}
+	.phoneFill{
+		width: 98%;
+	}
+}
+@media only screen and (max-width: 768px){
+	
+}
+@media only screen and (max-width: 960px) and (orientation:landscape){
+	.phoneHidden{
+		display: none;
+	}
+	.phoneFill{
+		width: 98%;
+	}
+}
+@media only screen and (max-width: 1024px){
+
+}
