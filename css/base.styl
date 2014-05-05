@@ -1,80 +1,308 @@
+vendor-prefixes ?= webkit moz o ms official
+@import 'nib'
+@import 'nib/gradients'
+
+dgris=#333
+lgris=#ddd
+gris=#888
+azul=#1B9AF7 
+verde=#0a7
+rojo=#d00
+naranja=#f99c19 
+a
+  text-decoration none
+html
+  background-color lgris
 body
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif
-  font-size: 16px
-  margin: auto
-  max-width: 75em
-  padding: 0.125em
-  width: 98.5%
-  color: white
-
-header,
-footer
-  min-height: 4em
-  padding: 0.25em
-  text-align: center
-
-/*Navigation*/
-nav
-  padding: 0px
-
-nav ul,
-nav li,
-nav a
-  color: white
-  display: inline-block
-  list-style: none
+  background-color #fefefe
+  box-shadow 0.2em 0.2em 0.2em rgba(dgris,0.7)
+  color dgris
+  font-family "Droid Serif",Arial
+  font-size 16px
   margin: 0
-  padding: 0
-  text-decoration: none
+header
+  background-color azul
+  overflow: hidden
 
-nav a
-  padding: 0.5em
-  transition: all 0.35s linear
+  #logo
+    border-right 1.5px solid verde
+    float left
+    width 110px
+    img
+      width 100px
+  #titulo
+    margin-left:120px
+    h1
+    h3
+      margin 0
+      padding 0
+      text-shadow 0.6px 0.6px 0 rgba(lgris,0.5)
 
-nav a:hover
-  background: #212121
-  /*border-top:0.2em solid white;*/
-  /*padding-top: 0.2em;*/
-  color: tomato
-  transform: translate(-0.225em)
+nav
+  background-color naranja
+  box-shadow 0px 0.18em 0.5px rgba(dgris,0.5)
+  #pullMenu
+    cursor pointer
+    display none
+    i
+      padding 0.5em
+      &:hover
+        background-color verde
+        color white
+        text-shadow none
+        transform scale(1.05,1.05)
+  ul
+    margin: 0
+    overflow: hidden
+    padding-left 1em
+    padding: 0
+    text-align center
+    li
+      display: inline-block
+      list-style: none
+      a
+        border-radius: 0.5em
+        color dgris
+        display: inline-block
+        font-weight: bold
+        padding 0.5em
+        text-shadow: 0.6px 0.6px 0 rgba(lgris,0.5)
+        transition: all 0.2s linear
+        &:hover
+          background-color verde
+          color white
+          text-shadow none
+          transform scale(1.05,1.05)
 
 footer
-  min-height: 2em
-  padding: 0.25em
-
-#container
-  overflow: hidden
-  padding: 0.24em
+  background-color azul
+  padding: 0.1em
+  text-align: center
+  h4
+    text-shadow 0.6px 0.6px 0 rgba(lgris,0.5)
+.container
+.rightBar
+  display: inline-block
   vertical-align: top
-  width: 80%
+  margin: 0 auto
+  padding: 2% 1%
+.container
+  border-right 2px solid verde
+  text-align: left
+  width: 85%
+.rightBar
+  width: 10%
+.fixed 
+  left: 0;
+  position:fixed;
+  top: 0;
+  width: 100%;
+form
+  fieldset
+    border none
+    margin 0
+    padding 0
+    text-align left
+    hgroup
+      h3
+      h5
+        margin 0
+        padding 0
+    .formblock
+      display inline-block
+      margin: 0
+      min-width: 200px
+      overflow: hidden
+      width: 100%
+      &.ta
+        width 100%
+      label
+      input 
+        border-radius: 0.4em
+        box-sizing border-box
+        display: inline-block
+        font-size: 16px
+        margin 0.5%
+        padding: 0.3em 0.2em
+        width: 48%
+      textarea
+        width 100%
+        margin 0
+        box-sizing border-box
+    
+    .formButtons
+      bottom: 0
+      box-sizing border-box
+      overflow: hidden
+      padding 0.2em 1em
+      width: 100%
+      button
+        border-radius 0.5em
+        border-style none
+        box-shadow 0.1em 0.1em 0 rgba(dgris,0.5)
+        cursor pointer
+        float right
+        font-size 16px
+        padding 0.3em 0.5em
+        &:active
+          box-shadow 0.1em 0.1em 0 rgba(dgris,0.5) inset
 
-#container aside
-  width: 22%
+.articulo
+  border-radius 1em
+  box-shadow 0.3em 0.3em 0.2em rgba(dgris,0.5)
+  display inline-block
+  margin 2%
+  max-width 480px
+  min-width 200px
+  text-align left
+  vertical-align top
+  width 100%
+  transition width 0.5s cubic-bezier(1,0,0.9,1)
+  .imagen
+    display inline-block
+    vertical-align top
+    width 33%
+    img 
+      width 100%
+      box-sizing border-box
 
-.phoneHidden
-  display: inline-block
+      
+  .titulos
+    display inline-block
+    vertical-align top
+    padding-top 10px
+    width 65%
+    hgroup
+      padding-left 0.3em
+      h4
+      h6
+        margin 0
+        padding 0
+    .resumen
+      margin-top 0.5em
+      padding 0 0.3em
+      font-size 0.9em
+    .fechas
+      display:block
+  .tags
+    width 100%
+    box-sizing border-box
+    border-top 2px solid verde
+    padding 0.4em
+    font-size 10px
+    ul
+      list-style none
+      margin 0
+      padding 0
+      li
+        display inline-block
+        a
+          box-sizing border-box
+          display inline-block
+          padding 0.2em
+          text-align center
+          width 100%
+          &:hover
+            text-decoration underline
 
-.phoneFill
-  display: inline-block
 
-.tabletHidden
-  display: inline-block
 
-/*@media only screen and (max-width: 320px)
-@media only screen and (max-width: 480px)*/
-@media only screen and (max-width: 600px)
+
+@media only screen and (min-width: 1600px)
+  form
+    fieldset
+      .formblock
+        width: 23%
+  .container
+    padding 0.5%
+  .articulo
+    width 24%
+    box-sizing border-box
+    margin 0.1%
+@media only screen and (max-width: 1600px) and (min-width:1201px)
+  form
+    fieldset
+      .formblock
+        width: 31%
+  .container
+    padding 0.5%
+  .articulo
+    width 32%
+    box-sizing border-box
+    margin 0.1%
+@media only screen and (max-width: 1200px) and (min-width:769px)
+  form
+    fieldset
+      .formblock
+        width: 48%
+        box-sizing border-box
+        label
+        input
+          width: 48%
+          box-sizing border-box
+  .articulo
+    width 49%
+    box-sizing border-box
+    margin 0.1%
+
+@media only screen and (max-width: 768px) and (min-width:481px)
+  .tabletHidden
+    display none
+  .tabletFill
+    width 100%
+    padding 0
+    margin 0
+    box-sizing border-box
+  .articulo
+    width 48%
+    box-sizing border-box
+    margin 0.5%
+  form
+    fieldset
+      .formblock
+        width:48%
+        box-sizing border-box
+        label
+        input
+          width 100%
+@media only screen and (max-width: 480px) 
   .phoneHidden
-    display: none
-
+    display none
   .phoneFill
-    width: 98%
+    width 100%
+    box-sizing border-box
+  .container
+    border none
+  .articulo
+    width 100%
+    box-sizing border-box
+    margin 1%
+  nav 
+    #pullMenu
+      display block
+    ul
+      display none
+      width 100%
+      box-sizing border-box
+      padding 0
+      li
+        padding 0
+        margin 0
+        width 49%
+        box-sizing border-box
+        a
+          width 100%
+          box-sizing border-box
+    
 
-/*@media only screen and (max-width: 768px)*/
-@media only screen and (max-width: 960px) and (orientation:landscape)
-  .phoneHidden
-    display: none
+  form
+    fieldset
+      .formblock
+        width:100%
+        box-sizing border-box
+        label
+        input
+          width 100%
+          box-sizing border-box
 
-  .phoneFill
-    width: 98%
 
-/*@media only screen and (max-width: 1024px)*/

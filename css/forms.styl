@@ -1,0 +1,76 @@
+azulrgbad=rgba(67,166,255,1)
+azulrgbah=rgba(67,166,255,0.6)
+azulrgbal=rgba(67,166,255,0.3)
+form
+	width 97%
+	padding 1%
+	fieldset
+		border 1px solid #333
+		border-radius 0.5em
+		padding 1%
+		.formblock
+			display  inline-block
+			padding 1%
+			width 22.5%
+			input
+				background rgba(43,150,255,0.2)
+				border 1px solid #666
+				border-radius 0.3em
+				width 94%
+				display inline-block
+				padding 1%
+				font-size inherit
+			label 
+				display inline-block
+				font-weight bold
+				width 94%
+				padding 1%
+		button
+			border 1px solid rgba(0,0,0,0.2)
+			padding 0.2em
+			border-radius 0.3em
+			box-shadow 1px 1px 1px #333
+			cursor pointer
+			font-size inherit
+			font-weight bold
+			background-color rgba(0,150,87,0.6)
+			transition all 0.1s ease
+			color #333
+			text-shadow 0.1em,0.1em,0.1em #ddd
+			background  linear-gradient(top, azulrgbad, azulrgbah)
+			background  linear-gradient(to bottom, azulrgbad, azulrgbah)
+
+		button:hover
+			transform scale(1.02,1.02)
+			box-shadow 2px 2px 1px #333
+			background  linear-gradient(bottom, azulrgbad, azulrgbah)
+			background  linear-gradient(to top, azulrgbad, azulrgbah)
+		button:active
+			transform scale(0.98,0.98)
+			box-shadow 0.5px 0.5px 1px #333
+			background rgba(0,150,87,0.8)
+			background  azulrgbad
+@media only screen and (max-width:1200px) and (min-width:1024px)
+	form
+		fieldset
+			.formblock
+				width 25%
+@media only screen and (max-width:1024px) and (min-width:800px)
+	form
+		fieldset
+			.formblock
+				width 30%
+@media only screen and (max-width:800px) and (min-width:560px)
+	form
+		fieldset
+			.formblock
+				width 45%
+@media only screen and (max-width:560px) 
+	form
+		fieldset
+			.formblock
+				max-width 25em
+				width 95%
+				label, input
+					width 95%
+					max-width 24em

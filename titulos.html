@@ -1,0 +1,51 @@
+<div id="titulos">
+	
+</div>
+<script type="text/javascript">
+	
+var queryTag=function(event){
+	event.preventDefault();
+
+	return false;	
+}
+var request=new requestHandler({
+	Controller:'Evento',
+	Action:'getEventos',
+	Params:'',
+	success:function(result){
+		$.each(result, function( index, item ) {
+			var tags="";
+			var ttags=item.Tags.length;
+			$.each(item.Tags,function(index,tag){
+				tags+='<li><a href="'+tag+'" class="tag">'+tag+'</a></li>'
+			});
+			var template='<article class="articulo">\
+				<div class="imagen"\
+					<img src="img/logo.gif">\
+				</div>\
+				<div class="titulos">\
+					<hgroup>\
+						<h4>'+item.Nombre+'</h4>\
+						<h6></h6>\
+					</hgroup>\
+					<div class="resumen"> '+item.Detalle+'\
+					</div>\
+					<div class="fechas"><a href="#" id="FechaIn">'+item.DiaI+'/'+item.MesI+'/'+item.AnioI+'</a>-<a href="#" id="FechaFin">'+item.DiaF+'/'+item.MesF+'/'+item.AnioF+'</a></div>\
+				</div>\
+				<div class="tags">\
+					<ul>'+
+						tags
+						+'</ul>\
+				</div>\
+			</article>'
+			$('#titulos').append(template);
+		});
+		$(".tag").on("click",queryTag);
+	}
+});
+request.doRequest();
+
+
+</script>
+
+
