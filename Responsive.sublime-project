@@ -2,13 +2,24 @@
 	"folders":
 	[
 		{
+			"follow_symlinks": true,
 			"path": "css"
 		},
 		{
+			"follow_symlinks": true,
 			"path": "js"
 		},
 		{
+			"follow_symlinks": true,
 			"path": "modelo"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "partials"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "Controlador"
 		}
 	]
 }

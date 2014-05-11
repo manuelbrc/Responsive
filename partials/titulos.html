@@ -1,0 +1,28 @@
+
+<div id="titulos">
+	<article class="articulo" ng-repeat="item in items">
+				<div class="imagen">
+					<img src="img/logo.gif">
+				</div>
+				<div class="titulos">
+					<hgroup>
+						<h4>{{item.Nombre}}</h4>
+						<h6></h6>
+					</hgroup>
+					<div class="resumen"> {{item.Detalle|truncate:200}}.
+					</div>
+					<div class="fechas"><a href="#" id="FechaIn">{{item.DiaI}}/{{item.MesI}}/{{item.AnioI}}</a>-<a href="#" id="FechaFin">{{item.DiaF}}/{{item.MesF}}/{{item.AnioF}}</a></div>
+				</div>
+				<div class="tags">
+					<ul>
+						<li class="tag" ng-repeat="tag in item.Tags"><a href="#/titulos?tag={{tag}}">{{tag}}</a></li>
+					</ul>
+				</div>
+			</article>
+</div>
+
+
+
+</script>
+
+

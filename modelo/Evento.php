@@ -67,24 +67,27 @@
 	        }
 	        $arr=array();
 	        while($fila = mysql_fetch_assoc($res)){
+	        	$fila= array_map('utf8_encode',$fila);
 	        	$fila["Tags"]=$this->getTags($fila["IdEvento"],$dbConn);
 	            $arr[]=$fila;
 
 	        }
-	        
 	        mysql_free_result($res);
 	        return $arr;
 	     }
 	     function getTags($_IdEvento,$dbConn){
 	     	//$dbContext=new Conn('localhost','root','');
 	        //$dbConn=$dbContext->getConn();
-	        $query=" select Nombre
+	        $query=" select idtag,Descripcion
 	                FROM vEventosTag
+	                where idevento={$_IdEvento}
 	            order by idtag asc";
 	        $res=mysql_query($query,$dbConn);
+	        
 	        $arr=array();
-	        while($fila = mysql_fetch_assoc($res)){
-	            $arr[]=$fila['Nombre'];
+	        while($fila =mysql_fetch_assoc($res)){
+	        	$fila= array_map('utf8_encode',$fila);
+	            $arr[]=$fila['descripcion'];
 	        }
 	        //mysql_free_result($res);
 	        return $arr;

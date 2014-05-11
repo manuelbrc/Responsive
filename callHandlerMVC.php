@@ -1,6 +1,5 @@
 <?php
-header('Content-type: text/json');
-header('Content-type: application/json');
+header('Content-Type: application/json');
 if (isset($_FILES["Imagen"])){
     if ($_FILES["Imagen"]["error"] > 0) {
         echo json_encode("Error: " . $_FILES["Imagen"]["error"] . "<br>");
@@ -42,8 +41,9 @@ if (isset($_FILES["Imagen"])){
         if(method_exists($obj, $aname)){
             //json_encode($obj->$aname($data));
             $cad="";
-            echo json_encode($obj->$aname($data));
-            
+            $arr=array();
+            $arr=$obj->$aname($data);
+            echo json_encode($arr);
         }else{
             echo json_encode('Error 404 - La acción solicitada no existe');
         }

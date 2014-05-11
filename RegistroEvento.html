@@ -1,22 +1,31 @@
+{{message}}
+joder
 <form action="POST">
 	<fieldset>
 		<hgroup>
 			<h3>Registro de eventos hist&oacute;ricos</h3>
 		</hgroup>
-	<div class="formblock"><label for="IdEventoP"></label></div>
+	<div class="formblock"><label for="IdEventoP">Evento padre</label><select id="IdEventoP" name="IdEventoP"></select></div>
+	<div class="formblock"><label for="IdEvento">Evento:</label>
+	<select id="IdEvento" name="IdEvento" ng-options="item as item.Nombre for item in items" ng-model="item"></select></div>
 	<div class="formblock"><label for="Nombre">T&iacute;tulo</label>
 		<input type="text" />
 	</div>
-	
-	<div class="formblock"><label for="DiaI"></label>
-	<input type="number" max="31" min="1"/>
+	ostia la puta
+	<div class="formblock"><label for="DiaI">Dia</label>
+	<input type="number" max="31" min="1" id="DiaI" name="DiaI" />
 	</div>
-	<div class="formblock"><label for="MesI"></label></div>
-	<div class="formblock"><label for="AnioI"></label></div>
-	<div class="formblock"><label for="DiaF"></label></div>
-	<div class="formblock"><label for="MesF"></label></div>
-	<div class="formblock"><label for="AnioF"></label></div>
-	<div class="formblock ta"><label for="Detalle">Evento</label>
+	<div class="formblock"><label for="MesI" >Mes</label>
+	<input type="number" max="12" min="1"  id="MesI" name="MesI" /></div>
+	<div class="formblock"><label for="AnioI">A&ntilde;o</label>
+	<input type="number" max="12" min="1"  id="AnioI" name="AnioI" /></div>
+	<div class="formblock"><label for="DiaF"></label>
+	<input type="number" max="12" min="1"  id="DiaF" name="DiaF" /></div>
+	 <div class="formblock"><label for="MesF"></label>
+	<input type="number" max="12" min="1"  id="MesF" name="MesF"/></div>
+	<div class="formblock"><label for="AnioF"></label>
+	<input type="number" max="12" min="1"  id="AnioF" name="AnioF" /></div>
+	<div class="formblock ta"><label for="Detalle">Detalle</label>
 		<textarea rows="10"></textarea></div>
 </fieldset>
 </form>

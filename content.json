@@ -1,0 +1,4 @@
+[
+    {"content_type" : "image", "title" : "Image 00", "data" : "logo.gif"},
+    {"content_type" : "notes", "title" : "Notes 00", "data" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit."}
+]
