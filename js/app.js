@@ -1,26 +1,10 @@
 'use strict';
 
-var app = angular.module('Historia',['ngRoute','filters']);
-angular.module('filters', []).
-    filter('truncate', function () {
-        return function (text, length, end) {
-            if (isNaN(length))
-                length = 10;
+var app = angular.module('Historia',['ngRoute','ngAnimate','textAngular']);
 
-            if (end === undefined)
-                end = "...";
-
-            if (text.length <= length || text.length - end.length <= length) {
-                return text;
-            }
-            else {
-                return String(text).substring(0, length-end.length) + end;
-            }
-
-        };
-    });
 
 app.config(['$routeProvider',function($routeProvider) {
+	
 	$routeProvider.when('/', {
 		templateUrl: 'partials/home.html',
 		controller: 'HomeCtrl'
@@ -28,6 +12,10 @@ app.config(['$routeProvider',function($routeProvider) {
 	$routeProvider.when('/titulos', {
 		templateUrl: 'partials/titulos.html',
 		controller: 'titulosCtrl'
+	});
+	$routeProvider.when('/titulo/:item', {
+		templateUrl: 'partials/titulo.html',
+		controller: 'tituloCtrl'
 	});
 	$routeProvider.when('/RegistroEvento', {
 		templateUrl: 'partials/RegistroEvento.html',
@@ -39,6 +27,7 @@ app.config(['$routeProvider',function($routeProvider) {
 	});
 	$routeProvider.otherwise({redirecTo: '/'});
 }]);
+
 app.config(['$httpProvider',function($httpProvider) {
   // Use x-www-form-urlencoded Content-Type
   $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
@@ -87,14 +76,27 @@ app.config(['$httpProvider',function($httpProvider) {
 
 app.controller('HomeCtrl', ['$scope', function($scope){
     $scope.message = 'Welcome to Inspire';
+    $scope.pageClass='ng-enter';
 }]);
-app.controller('titulosCtrl', ['$scope','$http', 
-	function($scope,$http){
-		"use strict";
+app.factory('EventoService',  function(){
+	var evento={};
 
+	return {
+		set:function(obj){evento=obj;},
+		get:function(){return evento;}
+	};
+});
+app.controller('titulosCtrl', ['$scope','$http','EventoService', 
+	function($scope,$http,EventoService){
+		"use strict";
+		$scope.min=1;
+		$scope.pageClass='ng-enter';
 	    $scope.url = 'callHandlerMVC.php';
 	    $scope.items = [];
-	     $scope.message = 'Welcome to Inspire';
+	    $scope.limit=200;
+	    $scope.idFilter = function (item) {
+	        return item.IdEvento >= $scope.min;
+	    };
 	    $scope.fetchitems = function() {
 	        $http.post($scope.url, {
                 data:'',
@@ -102,11 +104,36 @@ app.controller('titulosCtrl', ['$scope','$http',
                 Accion:'getEventos'
             }).then(function(result){
 	            $scope.items = result.data;
+	            $scope.items.push({"IdEvento":"0","EventoP":"","Nombre":"Nuevo","Detalle":"...","DiaI":"","MesI":"","AnioI":"2000","DiaF":"","MesF":"","AnioF":"","Tags":[]});
 	        });
-	    }
+	    };
+	    $scope.sendEvento=function(myobj){
+	    	EventoService.set(myobj);
+	    };
+	    $scope.setTags=function(){
+	    	//console.log($scope.items);
+	    };
+	    $scope.save=function(item){
+	    	item.Tags=item.Tags.split(',');
+	    	$http.post($scope.url, {
+                data:item,
+                Controlador:'Evento',
+                Accion:'guardaEvento'
+            }).then(function(result){
+	            $scope.message = result.data;
+	            alert($scope.message);
+	        });
+	    };
 	    /**Actualizacion de combo*/
 	    $scope.update = function() {
-			console.log($scope.item.code, $scope.item.name)
-		}
+			console.log($scope.item.IdEvento, $scope.item.Nombre)
+		};
 	    $scope.fetchitems();
+}]);
+
+app.controller('tituloCtrl', ['$scope','EventoService',
+	function($scope,EventoService){
+		"use strict";
+	    $scope.item = EventoService.get();
+	    $scope.pageClass='ng-enter';
 }]);

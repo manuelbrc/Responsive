@@ -12,7 +12,11 @@ class Modelo{
      function set($data){
          $cad="";    
          foreach ($data as $key => $value) {
-             $this->{$key}=$value;
+            if ($value=='')
+                $this->{$key}='NULL';  
+            else
+                $this->{$key}=$value;  
+             
          }
      }
     /**

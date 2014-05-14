@@ -3,16 +3,16 @@
 	require_once 'Modelo.php';
 	class Evento extends Modelo
 	{
-		private $IdEvento=0;
-		private $IdEventoP=0;
-		private $Nombre='';
-		private $Detalle='';
-		private $DiaI=0;
-		private $MesI=0;
-		private $AnioI=0;
-		private $DiaF=0;
-		private $MesF=0;
-		private $AnioF=0;
+		protected $IdEvento=0;
+		protected $IdEventoP=0;
+		protected $Nombre='';
+		protected $Detalle='';
+		protected $DiaI=0;
+		protected $MesI=0;
+		protected $AnioI=0;
+		protected $DiaF=0;
+		protected $MesF=0;
+		protected $AnioF=0;
 		function __construct($_IdEvento=0)
 		{
 			$this->IdEvento=$_IdEvento;
@@ -42,7 +42,7 @@
 			}else{
 				$query=sprintf("insert into Evento(IdEventoP,Nombre,Detalle,
 					DiaI,MesI,AnioI,DiaF,MesF,AnioF)
-              Values('%s','%s','%s','%s',%s,%s,%s,%s,%s,%s,%s)",
+              Values(%s,'%s','%s',%s,%s,%s,%s,%s,%s)",
               $this->IdEventoP,$this->Nombre,$this->Detalle,$this->DiaI,$this->MesI,$this->AnioI,$this->DiaF,$this->MesF,$this->AnioF);
 			}
 			$dbContext=new Conn('localhost','root','');
@@ -51,7 +51,7 @@
 	        if(!$res){
 	            return "Ha ocurrido un error: ".mysql_error()."<br/> en ".$query;
 	        }
-	     	return "Insercion exitosa";
+	     	return "Los datos se han guardado correctamente";
 		}
 		function getList(){
 	        $dbContext=new Conn('localhost','root','');
@@ -67,7 +67,13 @@
 	        }
 	        $arr=array();
 	        while($fila = mysql_fetch_assoc($res)){
-	        	$fila= array_map('utf8_encode',$fila);
+	        	///$fila= array_map('utf8_encode',$fila);
+	        	$fila["DiaI"]=$fila["DiaI"]+0;
+	        	$fila["DiaF"]=$fila["DiaF"]+0;
+	        	$fila["MesI"]=$fila["MesI"]+0;
+	        	$fila["MesF"]=$fila["MesF"]+0;
+	        	$fila["AnioI"]=$fila["AnioI"]+0;
+	        	$fila["AnioF"]=$fila["AnioF"]+0;
 	        	$fila["Tags"]=$this->getTags($fila["IdEvento"],$dbConn);
 	            $arr[]=$fila;
 
@@ -78,7 +84,7 @@
 	     function getTags($_IdEvento,$dbConn){
 	     	//$dbContext=new Conn('localhost','root','');
 	        //$dbConn=$dbContext->getConn();
-	        $query=" select idtag,Descripcion
+	        $query=" select idtag,Nombre
 	                FROM vEventosTag
 	                where idevento={$_IdEvento}
 	            order by idtag asc";
@@ -86,8 +92,8 @@
 	        
 	        $arr=array();
 	        while($fila =mysql_fetch_assoc($res)){
-	        	$fila= array_map('utf8_encode',$fila);
-	            $arr[]=$fila['descripcion'];
+	        	//$fila= array_map('utf8_encode',$fila);
+	            $arr[]=$fila['Nombre'];
 	        }
 	        //mysql_free_result($res);
 	        return $arr;

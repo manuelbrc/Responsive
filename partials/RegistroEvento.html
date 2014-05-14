@@ -4,27 +4,39 @@
 		<hgroup>
 			<h3>Registro de eventos hist&oacute;ricos</h3>
 		</hgroup>
-	<div class="formblock"><label for="IdEventoP">Evento padre</label><select id="IdEventoP" name="IdEventoP"></select></div>
+	<!--<div class="formblock"><label for="IdEventoP">Evento padre</label><select id="IdEventoP" name="IdEventoP"></select></div>-->
 	<div class="formblock"><label for="IdEvento">Evento</label>
-	<select id="IdEvento" name="IdEvento" ng-options="Evento as Evento.Nombre for Evento in items" ng-model="item"></select></div>
+	<select id="IdEvento" name="IdEvento" ng-options="item as item.Nombre for item in items" ng-model="item"></select></div>
 	<div class="formblock"><label for="Nombre" >T&iacute;tulo</label>
-		<input id="Nombre" name="Nombre" type="text" value="{{item.Nombre}}"/>
+		<input id="Nombre" name="Nombre" type="text" ng-model="item.Nombre" value="{{item.Nombre}}"/>
 	</div>
 	
-	<div class="formblock"><label for="DiaI">Dia</label>
-	<input type="number" max="31" min="1" id="DiaI" name="DiaI" value="{{item.DiaI}}" />
+	<div class="formdate">
+		<label for="DiaI">Fecha de inicio:</label>
+		<div class="date">
+		<input type="number" min="1" max="31" id="DiaI" name="DiaI" value="{{item.DiaI}}" placeholder="D&iacute;a" ng-model="item.DiaI"/>/
+		<input type="number" max="12" min="1"  id="MesI" name="MesI" value="{{item.MesI}}"placeholder="Mes" ng-model="item.MesI"/>/
+		<input type="number" max="3000" min="-10000"  id="AnioI" name="AnioI" placeholder="A&ntilde;o" ng-model="item.AnioI" value="{{item.AnioI}}"/>
+		</div>
 	</div>
-	<div class="formblock"><label for="MesI" >Mes</label>
-	<input type="number" max="12" min="1"  id="MesI" name="MesI" value="{{item.MesI}}"/></div>
-	<div class="formblock"><label for="AnioI">A&ntilde;o</label>
-	<input type="number" max="12" min="1"  id="AnioI" name="AnioI" value="{{item.AnioI}}"/></div>
-	<div class="formblock"><label for="DiaF"></label>
-	<input type="number" max="12" min="1"  id="DiaF" name="DiaF" value="{{item.DiaF}}"/></div>
-	 <div class="formblock"><label for="MesF"></label>
-	<input type="number" max="12" min="1"  id="MesF" name="MesF" value="{{item.MesF}}"/></div>
-	<div class="formblock"><label for="AnioF"></label>
-	<input type="number" max="12" min="1"  id="AnioF" name="AnioF" value="{{item.AnioF}}"/></div>
+	<div class="formdate">
+		<label for="DiaF">Fecha de fin:</label>
+		<div class="date">
+		<input type="number" max="31" min="1" id="DiaF" name="DiaF" value="{{item.DiaF}}" placeholder="D&iacute;a" ng-model="item.DiaF"/>/
+		
+		<input type="number" max="12" min="1"  id="MesF" name="MesF" placeholder="Mes" ng-model="item.MesF"/>/
+		<input type="number" max="3000" min="-10000"  id="AnioF" name="AnioF" value="{{item.AnioF}}"placeholder="A&ntilde;o" ng-model="item.AnioF"/>
+		</div>
+	</div>
 	<div class="formblock ta"><label for="Detalle">Detalle</label>
-		<textarea rows="10" >{{item.Detalle}}</textarea></div>
+		<text-angular ng-model="item.Detalle" ta-html-editor-class="border-around" ta-text-editor-class="border-around container"></text-angular>
+		<!--<textarea rows="10" ng-model="item.Detalle">{{item.Detalle}}</textarea></div>-->
+	<div class="formblock"><label for="Tags" >Etiquetas</label>
+		<input id="Tags" name="Tags" type="text"  value="" ng-model="item.Tags" ng-change="setTags()"/>
+	</div>
+	<div class="formButtons">
+		<button type="button" id="Guardar" name="Guardar" ng-click="save(item)">
+		<i class="fa fa-check fa-fw"></i>
+		Guardar</button></div>
 </fieldset>
 </form>

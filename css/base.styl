@@ -37,7 +37,12 @@ header
       margin 0
       padding 0
       text-shadow 0.6px 0.6px 0 rgba(lgris,0.5)
-
+.border-around
+  border:1px solid rgba(2,2,2,0.1);
+  border-radius: 6px;
+  vertical-align: text-bottom;
+.btn-group
+  display inline-block
 nav
   background-color naranja
   box-shadow 0px 0.18em 0.5px rgba(dgris,0.5)
@@ -97,6 +102,18 @@ footer
   position:fixed;
   top: 0;
   width: 100%;
+button
+  background: #3498db;
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  border-radius: 10px;
+  box-shadow: 0px 1px 3px #666666;
+  color: #fefefe;
+  font-size: 1em;
+  border-style none
+  float right
+  cursor:  pointer
+  padding: 0.25em 0.5em 0.25em 0.5em;
+  text-decoration: none;
 form
   fieldset
     border none
@@ -108,6 +125,40 @@ form
       h5
         margin 0
         padding 0
+    .formdate
+      display inline-block
+      margin: 0
+      min-width: 200px
+      overflow: hidden
+      width: 100%
+      display: inline-block
+      label
+        border-radius: 0.4em
+        box-sizing border-box
+        display: inline-block
+        font-size: 16px
+        margin 0.5%
+        padding: 0.3em 0.2em
+        width: 37%
+      .date
+        width: 62%
+        box-sizing: border-box
+        display: inline-block
+        input[type="number"]
+          width: 29%
+          box-sizing: border-box
+          display: inline-block
+          font-size: 16px
+          margin 0.5%
+          border: 1px solid #c4c4c4; 
+          padding: 0.2em; 
+          border-radius: 0.25em; 
+          box-shadow: 0px 0px 8px #d9d9d9; 
+          text-align right
+          &:focus
+            outline: none; 
+            border: 1px solid #7bc1f7; 
+            box-shadow: 0px 0px 8px #7bc1f7; 
     .formblock
       display inline-block
       margin: 0
@@ -117,7 +168,6 @@ form
       &.ta
         width 100%
       label
-      input 
         border-radius: 0.4em
         box-sizing border-box
         display: inline-block
@@ -125,28 +175,62 @@ form
         margin 0.5%
         padding: 0.3em 0.2em
         width: 48%
+      input 
+        box-sizing: border-box
+        display: inline-block
+        font-size: 16px
+        margin 0
+        border: 1px solid #c4c4c4; 
+        padding: 0.2em; 
+        border-radius: 0.25em; 
+        box-shadow: 0px 0px 8px #d9d9d9; 
+        width: 48%
+        &:focus
+          outline: none; 
+          border: 1px solid #7bc1f7; 
+          box-shadow: 0px 0px 8px #7bc1f7; 
+      select 
+        box-sizing: border-box
+        display: inline-block
+        font-size: 16px
+        margin 0
+        border: 1px solid #c4c4c4; 
+        padding: 0.2em; 
+        border-radius: 0.25em; 
+        box-shadow: 0px 0px 8px #d9d9d9; 
+        width: 48%
+        &:focus
+          outline: none; 
+          border: 1px solid #7bc1f7; 
+          box-shadow: 0px 0px 8px #7bc1f7; 
       textarea
         width 100%
+        box-sizing: border-box
+        display: inline-block
+        font-size: 16px
         margin 0
-        box-sizing border-box
-    
+        border: 1px solid #c4c4c4; 
+        padding: 0.2em; 
+        border-radius: 0.25em; 
+        box-shadow: 0px 0px 8px #d9d9d9;
+        font-family: "Droid Serif",Arial;
+        &:focus
+          outline: none; 
+          border: 1px solid #7bc1f7; 
+          box-shadow: 0px 0px 8px #7bc1f7; 
     .formButtons
       bottom: 0
       box-sizing border-box
       overflow: hidden
       padding 0.2em 1em
       width: 100%
-      button
-        border-radius 0.5em
-        border-style none
-        box-shadow 0.1em 0.1em 0 rgba(dgris,0.5)
-        cursor pointer
-        float right
-        font-size 16px
-        padding 0.3em 0.5em
+      
+        &:hover 
+          background: #3cb0fd;
+          background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+          text-decoration: none;
         &:active
           box-shadow 0.1em 0.1em 0 rgba(dgris,0.5) inset
-
 .articulo
   border-radius 1em
   box-shadow 0.3em 0.3em 0.2em rgba(dgris,0.5)
@@ -204,15 +288,65 @@ form
           width 100%
           &:hover
             text-decoration underline
+article.big
+  width: 100%
+  min-width: 100%
+  max-width: 100%
+  box-sizing: border-box
+  .imagen
+    width: 14%
+  .titulos
+    width: 84%
+  .tags
+    font-size 1em
+  .resumen
+    text-align justify
+@keyframes rotateFall {
+  0%    { transform: rotateZ(0deg); }
+  20%   { transform: rotateZ(10deg); animation-timing-function: ease-out; }
+  40%   { transform: rotateZ(17deg); }
+  60%   { transform: rotateZ(16deg); }
+  100%  { transform: translateY(100%) rotateZ(17deg); }
+}
 
+/* slide in from the bottom */
+@keyframes slideOutLeft {
+  to    { transform: translateY(-100%); }
+}
 
+/* rotate out newspaper */
+@keyframes rotateOutNewspaper {
+  to    { transform: translateZ(-3000px) rotateZ(360deg); opacity: 0; }
+}
 
+/* entering animations --------------------------------------- */
+/* scale up */
+@keyframes scaleUp {
+  from  { opacity: 0.3; -webkit-transform: scale(0.8); }
+}
+
+/* slide in from the right */
+@keyframes slideInRight {
+  from  { transform:translateX(100%); }
+  to    { transform: translateX(0); }
+}
+
+/* slide in from the bottom */
+@keyframes slideInUp {
+  from  { transform:translateY(100%); }
+  to    { transform: translateY(0); }
+}
+.ng-enter        
+  animation: slideInUp 0.5s both ease-in; z-index: 8888; 
+.ng-leave       
+  animation: slideOutLeft 0.5s both ease-in; z-index: 9999; 
 
 @media only screen and (min-width: 1600px)
   form
     fieldset
-      .formblock
+      .formblock, .formdate
         width: 23%
+
   .container
     padding 0.5%
   .articulo
@@ -222,7 +356,7 @@ form
 @media only screen and (max-width: 1600px) and (min-width:1201px)
   form
     fieldset
-      .formblock
+      .formblock, .formdate
         width: 31%
   .container
     padding 0.5%
@@ -233,13 +367,10 @@ form
 @media only screen and (max-width: 1200px) and (min-width:769px)
   form
     fieldset
-      .formblock
+      .formblock, .formdate
         width: 48%
         box-sizing border-box
-        label
-        input
-          width: 48%
-          box-sizing border-box
+
   .articulo
     width 49%
     box-sizing border-box
@@ -259,12 +390,15 @@ form
     margin 0.5%
   form
     fieldset
-      .formblock
+      .formblock, .formdate
         width:48%
         box-sizing border-box
         label
         input
+        select
           width 100%
+        .date
+          width: 100%
 @media only screen and (max-width: 480px) 
   .phoneHidden
     display none
@@ -297,12 +431,15 @@ form
 
   form
     fieldset
-      .formblock
+      .formblock, .formdate
         width:100%
         box-sizing border-box
         label
         input
+        select
           width 100%
           box-sizing border-box
+        .date
+          width: 100%
 
 

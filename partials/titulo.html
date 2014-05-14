@@ -1,15 +1,14 @@
-<input type="number"  min="100" max="500" value="{{limit}}" ng-model="limit"/>
-<div id="titulos">
-	<article class="articulo" ng-repeat="item in items|filter:idFilter" ng-model="item">
+<div id="titulo" >
+	<article class="articulo big" >
 				<div class="imagen">
 					<img src="img/logo.gif">
 				</div>
 				<div class="titulos">
 					<hgroup>
-						<h4><a ng-click="sendEvento(item)" href="#/titulo/{{item.IdEvento}}">{{item.Nombre}}</a></h4>
+						<h4><a href="#/titulo/{{item.IdEvento}}">{{item.Nombre}}</a></h4>
 						<h6></h6>
 					</hgroup>
-					<div class="resumen"> {{item.Detalle|limitTo:limit}}.
+					<div class="resumen"> {{item.Detalle}}.
 					</div>
 					<div class="fechas"><a href="#" id="FechaIn">{{item.DiaI}}/{{item.MesI}}/{{item.AnioI}}</a>-<a href="#" id="FechaFin">{{item.DiaF}}/{{item.MesF}}/{{item.AnioF}}</a></div>
 				</div>
@@ -20,5 +19,3 @@
 				</div>
 			</article>
 </div>
-
-

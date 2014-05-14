@@ -12,5 +12,10 @@ class EventoController{
         }
         return 'Ha ocurrido un error';
 	}
+	function guardaEvento($data){
+		$oe = new Evento();
+		$oe->set($data);
+		return $oe->Guardar();
+	}
 }
 ?>
